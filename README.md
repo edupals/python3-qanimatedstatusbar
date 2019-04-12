@@ -1,6 +1,6 @@
 # QAnimatedStatusBar
 
-QAnimatedStatusBar is a QT qidget for python3 that shows an animated status bar with a message.
+QAnimatedStatusBar is a QT widget for python3 that shows an animated status bar with a message.
 
 ## setText(string)
 
