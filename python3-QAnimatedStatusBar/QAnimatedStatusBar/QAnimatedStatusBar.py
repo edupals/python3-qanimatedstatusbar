@@ -70,7 +70,7 @@ class QAnimatedStatusBar(QStatusBar):
 		height=(self.height()/10)-10
 		if self.height_<height:
 			self.height_=height
-		super(QAnimatedstateBar,self).show()
+		super(QAnimatedStatusBar,self).show()
 		width=self.parentWidget().width()
 		self.anim.setStartValue(QRect(0,0,width,0))
 		self.anim.setEndValue(QRect(0,0,width,self.height_))
