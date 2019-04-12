@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from PyQt5.QtWidgets import QApplication, QWidget,QStatusBar
+from PyQt5.QtWidgets import QStatusBar
 from PyQt5 import QtGui
-from PyQt5.QtCore import QSize,pyqtSlot,Qt, QPropertyAnimation,QRect,QTimer,pyqtSignal
+from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer
 
 class QAnimatedStatusBar(QStatusBar):
 
@@ -21,6 +21,10 @@ class QAnimatedStatusBar(QStatusBar):
 						text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;"
 	#def __init__
 
+	def _debug(self,msg):
+		print("%s"%msg)
+	#def _debug
+
 	def setText(self,msg):
 		self.msg="%s"%msg
 	#def setText
@@ -29,7 +33,7 @@ class QAnimatedStatusBar(QStatusBar):
 		try:
 			self.anim=QPropertyAnimation(self, b"%s"%animation)
 		except Exception as e:
-			print(e)
+			self._debug(e)
 	#def setAnimation
 
 	def setAnimationInterval(self,miliseconds):
