@@ -37,7 +37,7 @@ if __name__ == '__main__':
         license='GPL',
         platforms='UNIX',
 #        scripts = [''],
-        package_dir = {'':'python3-qanimatedstatusbar'},
+        package_dir = {'':'python3-QAnimatedStatusBar'},
         packages = ['QAnimatedStatusBar'],
         data_files = [],
         classifiers=[
