@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget,QStatusBar
 from PyQt5 import QtGui
 from PyQt5.QtCore import QSize,pyqtSlot,Qt, QPropertyAnimation,QRect,QTimer,pyqtSignal
 
-class QAnimatedstateBar(QstateBar):
+class QAnimatedStatusBar(QStatusBar):
 
 	def __init__(self):
 		super().__init__()
@@ -17,8 +17,8 @@ class QAnimatedstateBar(QstateBar):
 		self.showInterval=3000
 		self.msg=''
 		self.css={}
-		self.css['default']="QstateBar{background-color:qlineargradient(x1:0 y1:0,x2:0 y2:1,stop:0 rgba(255,0,0,1), stop:1 rgba(255,0,0,0.6));color:white;\
-						text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;}"
+		self.css['default']="background-color:qlineargradient(x1:0 y1:0,x2:0 y2:1,stop:0 rgba(255,0,0,1), stop:1 rgba(255,0,0,0.6));color:white;\
+						text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;"
 	#def __init__
 
 	def setText(self,msg):
@@ -41,11 +41,11 @@ class QAnimatedstateBar(QstateBar):
 	#def setShowInterval
 
 	def setStateCss(self,state,css):
-		self.css[state]="text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;"+css
+		self.css[state]="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;%s}"%css
 	#def setStateCss
 
 	def setCss(self,css):
-		self.css['default']="text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;"+css
+		self.css['default']="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;%s}"%css
 	#def setCss
 
 	def show(self,state=None):
