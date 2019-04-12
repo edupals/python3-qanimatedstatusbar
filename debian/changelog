@@ -1,3 +1,9 @@
+python3-qanimatedstatusbar (0.2) bionic; urgency=medium
+
+  * Changed lib path
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 12 Apr 2019 13:28:22 +0200
+
 python3-qanimatedstatusbar (0.1) bionic; urgency=medium
 
   * Initial release. 
