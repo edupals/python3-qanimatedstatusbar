@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from PyQt5.QtWidgets import QApplication, QWidget,QstateBar
+from PyQt5.QtWidgets import QApplication, QWidget,QStatusBar
 from PyQt5 import QtGui
 from PyQt5.QtCore import QSize,pyqtSlot,Qt, QPropertyAnimation,QRect,QTimer,pyqtSignal
 
