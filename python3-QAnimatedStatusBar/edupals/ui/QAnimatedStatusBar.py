@@ -17,8 +17,8 @@ class QAnimatedStatusBar(QStatusBar):
 		self.showInterval=3000
 		self.msg=''
 		self.css={}
-		self.css['default']="background-color:qlineargradient(x1:0 y1:0,x2:0 y2:1,stop:0 rgba(255,0,0,1), stop:1 rgba(255,0,0,0.6));color:white;\
-						text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;"
+		self.css['default']="background-color:qlineargradient(x1:0 y1:0,x2:0 y2:1,stop:0 rgba(25,25,25,1), stop:1 rgba(25,25,25,0.6));color:white;\
+						text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;"
 	#def __init__
 
 	def _debug(self,msg):
@@ -45,18 +45,19 @@ class QAnimatedStatusBar(QStatusBar):
 	#def setShowInterval
 
 	def setStateCss(self,state,css):
-		self.css[state]="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;%s}"%css
+		self.css[state]="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;%s}"%css
 	#def setStateCss
 
 	def setCss(self,css):
-		self.css['default']="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;border-radius:5px;%s}"%css
+		self.css['default']="QStatusBar{text-decoration:underline;font-weight:bold;border:1px;border-color:black;border-style:solid;%s}"%css
 	#def setCss
 
 	def show(self,state=None):
 		def hide_message():
 			self.anim.setDuration(self.animationInterval)
-			self.anim.setStartValue(QRect(0,0,width,self.height_))
-			self.anim.setEndValue(QRect(0,0,width,0))
+			#360px should be good enough....
+			self.anim.setStartValue(QRect(width_-width,0,width,self.height_))
+			self.anim.setEndValue(QRect(width_-width,0,width,0))
 			self.anim.start()
 			self.timer.singleShot(self.animationInterval, lambda:self.hide())
 		if state:
@@ -75,9 +76,10 @@ class QAnimatedStatusBar(QStatusBar):
 		if self.height_<height:
 			self.height_=height
 		super(QAnimatedStatusBar,self).show()
-		width=self.parentWidget().width()
-		self.anim.setStartValue(QRect(0,0,width,0))
-		self.anim.setEndValue(QRect(0,0,width,self.height_))
+		width_=self.parentWidget().width()
+		width=360
+		self.anim.setStartValue(QRect(width_-width,0,width,0))
+		self.anim.setEndValue(QRect(width_-width,0,width,self.height_))
 		self.anim.start()
 		self.timer.singleShot(self.showInterval, lambda:hide_message())
 	#def show(self,state=None):
