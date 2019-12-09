@@ -1,3 +1,10 @@
+python3-qanimatedstatusbar (0.3) bionic; urgency=medium
+
+  * No more round corners
+  * Align to upper right corner of the window
+
+ -- Juanma1980 <juanma1980@gmail.com>  Mon, 09 Dec 2019 14:31:40 +0100
+
 python3-qanimatedstatusbar (0.2-1bionic) bionic; urgency=medium
 
   * Changed lib path
