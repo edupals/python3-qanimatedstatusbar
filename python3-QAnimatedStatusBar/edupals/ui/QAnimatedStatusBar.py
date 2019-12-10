@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from PyQt5.QtWidgets import QStatusBar
+from PyQt5.QtWidgets import QStatusBar,QPushButton
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer
 
@@ -13,6 +13,9 @@ class QAnimatedStatusBar(QStatusBar):
 		self.hide()
 		self.timer=QTimer()
 		self.timer.setSingleShot(True)
+		btn_close=QPushButton("X")
+		btn_close.clicked.connect(self._hide_message)
+		self.insertPermanentWidget(0,btn_close)
 		self.animationInterval=1000
 		self.showInterval=3000
 		self.msg=''
@@ -22,7 +25,7 @@ class QAnimatedStatusBar(QStatusBar):
 	#def __init__
 
 	def _debug(self,msg):
-		print("%s"%msg)
+		print("QAnimatedStatusBar: %s"%msg)
 	#def _debug
 
 	def setText(self,msg):
@@ -53,13 +56,6 @@ class QAnimatedStatusBar(QStatusBar):
 	#def setCss
 
 	def show(self,state=None):
-		def hide_message():
-			self.anim.setDuration(self.animationInterval)
-			#360px should be good enough....
-			self.anim.setStartValue(QRect(width_-width,0,width,self.height_))
-			self.anim.setEndValue(QRect(width_-width,0,width,0))
-			self.anim.start()
-			self.timer.singleShot(self.animationInterval, lambda:self.hide())
 		if state:
 				if state in self.css.keys():
 					self.setStyleSheet("""%s"""%self.css[state])
@@ -77,9 +73,21 @@ class QAnimatedStatusBar(QStatusBar):
 			self.height_=height
 		super(QAnimatedStatusBar,self).show()
 		width_=self.parentWidget().width()
+		#360px should be good enough....
 		width=360
+		self.anim.setDuration(1)
 		self.anim.setStartValue(QRect(width_-width,0,width,0))
 		self.anim.setEndValue(QRect(width_-width,0,width,self.height_))
 		self.anim.start()
-		self.timer.singleShot(self.showInterval, lambda:hide_message())
+		if not state:
+			self.timer.singleShot(self.showInterval, lambda:self._hide_message())
 	#def show(self,state=None):
+		
+	def _hide_message(self):
+		width_=self.parentWidget().width()
+		width=360
+		self.anim.setDuration(self.animationInterval)
+		self.anim.setStartValue(QRect(width_-width,0,width,self.height_))
+		self.anim.setEndValue(QRect(width_-width,0,width,0))
+		self.anim.start()
+		self.timer.singleShot(self.animationInterval, lambda:self.hide())
