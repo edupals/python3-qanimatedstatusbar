@@ -1,3 +1,10 @@
+python3-qanimatedstatusbar (0.4) bionic; urgency=medium
+
+  * Add close button
+  * Remove autohide when any state but default is present
+
+ -- Juanma1980 <juanma1980@gmail.com>  Tue, 10 Dec 2019 14:34:58 +0100
+
 python3-qanimatedstatusbar (0.3) bionic; urgency=medium
 
   * No more round corners
