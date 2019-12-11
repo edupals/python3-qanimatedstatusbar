@@ -13,9 +13,11 @@ class QAnimatedStatusBar(QStatusBar):
 		self.hide()
 		self.timer=QTimer()
 		self.timer.setSingleShot(True)
-		btn_close=QPushButton("X")
-		btn_close.clicked.connect(self._hide_message)
-		self.insertPermanentWidget(0,btn_close)
+		self.btn_close=QPushButton("X")
+		self.insertPermanentWidget(0,self.btn_close)
+		self.btn_close.clicked.connect(self._hide_message)
+		self.btn_close.setAutoDefault(False)
+		self.btn_close.setDefault(False)
 		self.animationInterval=1000
 		self.showInterval=3000
 		self.msg=''
@@ -56,6 +58,7 @@ class QAnimatedStatusBar(QStatusBar):
 	#def setCss
 
 	def show(self,state=None):
+		self._debug("Show state %s"%state)
 		if state:
 				if state in self.css.keys():
 					self.setStyleSheet("""%s"""%self.css[state])
@@ -79,11 +82,14 @@ class QAnimatedStatusBar(QStatusBar):
 		self.anim.setStartValue(QRect(width_-width,0,width,0))
 		self.anim.setEndValue(QRect(width_-width,0,width,self.height_))
 		self.anim.start()
-		if not state:
+		if state==None or state=='':
+			self._debug("Hide state %s"%state)
 			self.timer.singleShot(self.showInterval, lambda:self._hide_message())
 	#def show(self,state=None):
-		
+	
+
 	def _hide_message(self):
+		self._debug("Hiding statusbar")
 		width_=self.parentWidget().width()
 		width=360
 		self.anim.setDuration(self.animationInterval)
