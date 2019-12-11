@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from PyQt5.QtWidgets import QStatusBar,QPushButton
 from PyQt5 import QtGui
-from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer
+from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer,QSize
 
 class QAnimatedStatusBar(QStatusBar):
 
@@ -13,7 +13,11 @@ class QAnimatedStatusBar(QStatusBar):
 		self.hide()
 		self.timer=QTimer()
 		self.timer.setSingleShot(True)
-		self.btn_close=QPushButton("X")
+		icon=QtGui.QIcon.fromTheme("window-close")
+		self.btn_close=QPushButton()
+		self.btn_close.setIcon(icon)
+		self.btn_close.setIconSize(QSize(32,32))
+		self.btn_close.setStyleSheet("background-color:transparent;margin:0px;border:0px;")
 		self.insertPermanentWidget(0,self.btn_close)
 		self.btn_close.clicked.connect(self._hide_message)
 		self.btn_close.setAutoDefault(False)
