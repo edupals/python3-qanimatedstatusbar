@@ -7,7 +7,7 @@ class QAnimatedStatusBar(QStatusBar):
 
 	def __init__(self):
 		super().__init__()
-		self.dbg=True
+		self.dbg=False
 		self.height_=0
 		self.anim=QPropertyAnimation(self, b"geometry")
 		self.hide()
@@ -89,8 +89,7 @@ class QAnimatedStatusBar(QStatusBar):
 		if state==None or state=='':
 			self._debug("Hide state %s"%state)
 			self.timer.singleShot(self.showInterval, lambda:self._hide_message())
-	#def show(self,state=None):
-	
+	#def show
 
 	def _hide_message(self):
 		self._debug("Hiding statusbar")
@@ -101,3 +100,4 @@ class QAnimatedStatusBar(QStatusBar):
 		self.anim.setEndValue(QRect(width_-width,0,width,0))
 		self.anim.start()
 		self.timer.singleShot(self.animationInterval, lambda:self.hide())
+	#def _hide_message
