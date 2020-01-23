@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from PyQt5.QtWidgets import QStatusBar,QPushButton
+from PyQt5.QtWidgets import QStatusBar,QPushButton,QLabel
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer
 
@@ -19,6 +19,9 @@ class QAnimatedStatusBar(QStatusBar):
 		self.btn_close.setAutoDefault(False)
 		self.btn_close.setDefault(False)
 		self.animationInterval=1000
+		self.label=QLabel("")
+		self.label.setStyleSheet("background-color:transparent;margin:0px;border:0px;text-decoration:none")
+		self.addWidget(self.label)
 		self.showInterval=3000
 		self.msg=''
 		self.css={}
@@ -31,7 +34,8 @@ class QAnimatedStatusBar(QStatusBar):
 	#def _debug
 
 	def setText(self,msg):
-		self.msg="%s"%msg
+			#self.msg="%s"%msg.replace("\n","<br>")
+		self.label.setText("%s"%msg.replace("\n","<br>"))
 	#def setText
 
 	def setAnimation(self,animation):
@@ -68,22 +72,23 @@ class QAnimatedStatusBar(QStatusBar):
 		else:
 				self.setStyleSheet("""%s"""%self.css['default'])
 		self.raise_()
-		self.showMessage("%s"%self.msg)
+		#self.showMessage("%s"%self.msg)
+		self.showMessage("")
 		self.anim.setDuration(self.animationInterval)
 		self.anim.setLoopCount(1)
-		height=(self.height()/10)-10
-		if self.height_<height:
-			self.height_=height
+		self.btn_close.height=24
 		super(QAnimatedStatusBar,self).show()
 		width_=self.parentWidget().width()
 		#360px should be good enough....
 		width=360
 		self.anim.setDuration(1)
 		self.anim.setStartValue(QRect(width_-width,0,width,0))
-		self.anim.setEndValue(QRect(width_-width,0,width,self.height_))
+		self.anim.setEndValue(QRect(width_-width,0,width,self.label.height()+6))
 		self.anim.start()
 		if state==None or state=='':
 			self._debug("Hide state %s"%state)
+			height=(self.height()/10)-10
+			self.height_=height
 			self.timer.singleShot(self.showInterval, lambda:self._hide_message())
 	#def show(self,state=None):
 	
