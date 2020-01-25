@@ -20,6 +20,7 @@ class QAnimatedStatusBar(QStatusBar):
 		self.btn_close.setDefault(False)
 		self.animationInterval=1000
 		self.label=QLabel("")
+		self.label.setWordWrap(True)
 		self.label.setStyleSheet("background-color:transparent;margin:0px;border:0px;text-decoration:none")
 		self.addWidget(self.label)
 		self.showInterval=3000
@@ -76,7 +77,7 @@ class QAnimatedStatusBar(QStatusBar):
 		self.showMessage("")
 		self.anim.setDuration(self.animationInterval)
 		self.anim.setLoopCount(1)
-		self.btn_close.height=24
+		self.btn_close.height=16
 		super(QAnimatedStatusBar,self).show()
 		width_=self.parentWidget().width()
 		#360px should be good enough....
