@@ -1,3 +1,9 @@
+python3-qanimatedstatusbar (0.6.1) bionic; urgency=medium
+
+  * word wrap
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Sat, 25 Jan 2020 11:17:42 +0000
+
 python3-qanimatedstatusbar (0.6) bionic; urgency=medium
 
   * Multiline rich text support
