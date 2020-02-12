@@ -1,3 +1,9 @@
+python3-qanimatedstatusbar (0.6.2) bionic; urgency=medium
+
+  * Disabled debug messages
+
+ -- Juanma1980 <juanma1980@gmail.com>  Wed, 12 Feb 2020 10:04:26 +0100
+
 python3-qanimatedstatusbar (0.6.1) bionic; urgency=medium
 
   * word wrap
