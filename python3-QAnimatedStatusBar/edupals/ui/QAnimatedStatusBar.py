@@ -7,7 +7,7 @@ class QAnimatedStatusBar(QStatusBar):
 
 	def __init__(self):
 		super().__init__()
-		self.dbg=True
+		self.dbg=False
 		self.height_=0
 		self.anim=QPropertyAnimation(self, b"geometry")
 		self.hide()
