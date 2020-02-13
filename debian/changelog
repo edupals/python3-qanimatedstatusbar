@@ -1,3 +1,9 @@
+python3-qanimatedstatusbar (0.6.3) bionic; urgency=medium
+
+  * replace setuptools with distutils
+
+ -- Juanma1980 <juanma1980@gmail.com>  Thu, 13 Feb 2020 13:03:49 +0100
+
 python3-qanimatedstatusbar (0.6.2) bionic; urgency=medium
 
   * Disabled debug messages
