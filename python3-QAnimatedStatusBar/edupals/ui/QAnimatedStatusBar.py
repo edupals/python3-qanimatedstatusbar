@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from PyQt5.QtWidgets import QStatusBar,QPushButton,QLabel
-from PyQt5 import QtGui
-from PyQt5.QtCore import Qt, QPropertyAnimation,QRect,QTimer
+from PySide2.QtWidgets import QStatusBar,QPushButton,QLabel
+from PySide2 import QtGui
+from PySide2.QtCore import Qt, QPropertyAnimation,QRect,QTimer
 
 class QAnimatedStatusBar(QStatusBar):
 
