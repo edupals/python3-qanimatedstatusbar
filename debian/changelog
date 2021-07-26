@@ -1,6 +1,7 @@
-python3-qanimatedstatusbar (0.6.3.1) focal; urgency=medium
+python3-qanimatedstatusbar (0.6.4) focal; urgency=medium
 
   * First focal release
+  * Ported to pyside2
 
  -- Juanma1980 <juanma1980@gmail.com>  Tue, 19 Jan 2021 12:08:44 +0100
 
