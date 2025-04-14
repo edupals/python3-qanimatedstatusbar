@@ -1,3 +1,9 @@
+python3-qanimatedstatusbar (0.6.4+0llx25) noble; urgency=medium
+
+  * Noble release
+
+ -- Juanma1980 <juanma1980@gmail.com>  Mon, 14 Apr 2025 06:51:43 +0200
+
 python3-qanimatedstatusbar (0.6.4ubuntu1) jammy; urgency=medium
 
   * Jammy release
